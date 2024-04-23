@@ -14,8 +14,8 @@ data "azurerm_management_group" "landing_zones" {
 
 # create a management group for the project set
 resource "azurerm_management_group" "project_set" {
-  name = var.license_plate
-  display_name = "${var.license_plate}: ${var.project_set_name}"
+  name                       = var.license_plate
+  display_name               = "${var.license_plate}: ${var.project_set_name}"
   parent_management_group_id = data.azurerm_management_group.landing_zones.id
 }
 
@@ -50,7 +50,7 @@ module "lz_vending" {
       resource_group_name     = "rg-perimeter-networking"
       vwan_connection_enabled = true
       vwan_hub_resource_id    = var.vwan_hub_resource_id
-      tags = var.common_tags
+      tags                    = var.common_tags
     }
   } : {}
 }

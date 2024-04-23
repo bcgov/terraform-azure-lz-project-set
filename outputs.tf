@@ -4,7 +4,6 @@ output "management_group_id" {
 }
 
 output "subscription_ids" {
-  value = { for k, v in module.lz_vending : k => v.subscription_id }
+  value       = { for k, v in module.lz_vending : k => v.subscription_id }
   description = "The subscription IDs of each landing zone created."
 }
-

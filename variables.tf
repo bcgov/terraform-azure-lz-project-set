@@ -42,10 +42,10 @@ variable "project_set_name" {
 variable "subscriptions" {
   description = "Configuration details for each subscription"
   type = map(object({
-    name          : string
-    display_name  : string
-    network       : object({
-      enabled       : bool
+    name : string
+    display_name : string
+    network : object({
+      enabled : bool
       address_space : list(string)
     })
   }))
@@ -54,7 +54,7 @@ variable "subscriptions" {
 variable "common_tags" {
   description = "Common tags to apply to all resources"
   type        = map(string)
-  default     = {
+  default = {
     deployedBy = "Terraform"
   }
 }
