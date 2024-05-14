@@ -44,10 +44,10 @@ module "lz_vending" {
   # virtual network variables
   virtual_network_enabled = each.value.network.enabled
   virtual_networks = each.value.network.enabled ? {
-    perimeter = {
-      name                    = "perimeter"
+    vwan_spoke = {
+      name                    = "vwan_spoke"
       address_space           = each.value.network.address_space
-      resource_group_name     = "rg-perimeter-networking"
+      resource_group_name     = "${var.license_plate}-${each.value.name}-networking"
       vwan_connection_enabled = true
       vwan_hub_resource_id    = var.vwan_hub_resource_id
       tags                    = var.common_tags
