@@ -19,10 +19,6 @@ resource "azurerm_management_group" "project_set" {
   parent_management_group_id = data.azurerm_management_group.landing_zones.id
 }
 
-resource "azurerm_resource_provider_registration" "network" {
-  name = "Microsoft.Network"
-}
-
 module "lz_vending" {
   source  = "Azure/lz-vending/azurerm"
   version = "4.1.0"
@@ -57,8 +53,4 @@ module "lz_vending" {
       tags                    = var.common_tags
     }
   } : {}
-
-  depends_on = [
-    azurerm_resource_provider_registration.network
-  ]
 }
