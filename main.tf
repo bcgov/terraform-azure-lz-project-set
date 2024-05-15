@@ -49,7 +49,7 @@ module "lz_vending" {
   virtual_network_enabled = each.value.network.enabled
   virtual_networks = each.value.network.enabled ? {
     vwan_spoke = {
-      name                    = "vwan_spoke"
+      name                    = "${var.license_plate}-${each.value.name}-vwan-spoke"
       address_space           = each.value.network.address_space
       resource_group_name     = "${var.license_plate}-${each.value.name}-networking"
       vwan_connection_enabled = true
