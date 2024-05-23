@@ -64,8 +64,8 @@ module "lz_vending" {
     registry = {
       amount            = each.value.budget_amount
       time_grain        = "Monthly"
-      time_period_start = formatdate("YYYY-MM-01T00:00:00Z", timestamp())
-      time_period_end   = formatdate("YYYY-MM-01T00:00:00Z", timeadd(timestamp(), "87600h")) // 10 years from now
+      time_period_start = formatdate("YYYY-MM-01'T'00:00:00Z", timestamp())
+      time_period_end   = formatdate("YYYY-MM-01'T'00:00:00Z", timeadd(timestamp(), "87600h")) // 10 years from now
       notifications = {
         eightypercent = {
           enabled        = true
