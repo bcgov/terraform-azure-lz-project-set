@@ -83,5 +83,5 @@ module "lz_vending" {
         }
       }
     }
-  } : {}
+  }
 }
