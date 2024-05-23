@@ -58,6 +58,8 @@ module "lz_vending" {
     }
   } : {}
 
+  budget_enabled = each.value.budget_amount > 0
+
   budgets = {
     registry = {
       amount            = each.value.budget_amount
@@ -81,5 +83,5 @@ module "lz_vending" {
         }
       }
     }
-  }
+  } : {}
 }
