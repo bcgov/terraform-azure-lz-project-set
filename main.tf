@@ -57,4 +57,29 @@ module "lz_vending" {
       tags                    = var.common_tags
     }
   } : {}
+
+  budgets = each.value.budget_amount > 0 ? {
+    registry = {
+      amount            = each.value.budget_amount
+      time_grain        = "Monthly"
+      time_period_start = formatdate("YYYY-MM-01T00:00:00Z", timestamp())
+      time_period_end   = formatdate("YYYY-MM-01T00:00:00Z", timeadd(timestamp(), "87600h")) // 10 years from now
+      notifications = {
+        eightypercent = {
+          enabled        = true
+          operator       = "GreaterThan"
+          threshold      = 80
+          threshold_type = "Actual"
+          contact_groups = ["Owner"]
+        }
+        budgetexceeded = {
+          enabled        = true
+          operator       = "GreaterThan"
+          threshold      = 100
+          threshold_type = "Forecasted"
+          contact_groups = ["Owner"]
+        }
+      }
+    }
+  } : {}
 }
