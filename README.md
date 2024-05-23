@@ -11,14 +11,15 @@ For each environment, the module will create a subscription, a network resource 
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.1 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 3.74.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | 1.8.3 |
+| <a name="requirement_azapi"></a> [azapi](#requirement\_azapi) | 1.13.1 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | 3.103.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | >= 3.74.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.103.1 |
 
 ## Modules
 
@@ -30,8 +31,8 @@ For each environment, the module will create a subscription, a network resource 
 
 | Name | Type |
 |------|------|
-| [azurerm_management_group.project_set](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/management_group) | resource |
-| [azurerm_management_group.landing_zones](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/management_group) | data source |
+| [azurerm_management_group.project_set](https://registry.terraform.io/providers/hashicorp/azurerm/3.103.1/docs/resources/management_group) | resource |
+| [azurerm_management_group.landing_zones](https://registry.terraform.io/providers/hashicorp/azurerm/3.103.1/docs/data-sources/management_group) | data source |
 
 ## Inputs
 
@@ -44,7 +45,7 @@ For each environment, the module will create a subscription, a network resource 
 | <a name="input_project_set_name"></a> [project\_set\_name](#input\_project\_set\_name) | The name of the project set | `string` | n/a | yes |
 | <a name="input_secondary_location"></a> [secondary\_location](#input\_secondary\_location) | The secondary location for resources | `string` | `"canadaeast"` | no |
 | <a name="input_subscription_billing_scope"></a> [subscription\_billing\_scope](#input\_subscription\_billing\_scope) | The billing scope for the subscription | `string` | n/a | yes |
-| <a name="input_subscriptions"></a> [subscriptions](#input\_subscriptions) | Configuration details for each subscription | <pre>map(object({<br>    name : string<br>    display_name : string<br>    network : object({<br>      enabled : bool<br>      address_space : list(string)<br>    })<br>  }))</pre> | n/a | yes |
+| <a name="input_subscriptions"></a> [subscriptions](#input\_subscriptions) | Configuration details for each subscription | <pre>map(object({<br>    name : string<br>    display_name : string<br>    budget_amount : optional(number, 0)<br>    network : object({<br>      enabled : bool<br>      address_space : list(string)<br>    })<br>  }))</pre> | n/a | yes |
 | <a name="input_vwan_hub_resource_id"></a> [vwan\_hub\_resource\_id](#input\_vwan\_hub\_resource\_id) | The resource ID for the virtual WAN hub | `string` | n/a | yes |
 
 ## Outputs
