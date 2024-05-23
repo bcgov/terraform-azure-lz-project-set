@@ -58,7 +58,7 @@ module "lz_vending" {
     }
   } : {}
 
-  budgets = each.value.budget_amount > 0 ? {
+  budgets = {
     registry = {
       amount            = each.value.budget_amount
       time_grain        = "Monthly"
@@ -81,5 +81,5 @@ module "lz_vending" {
         }
       }
     }
-  } : {}
+  }
 }
