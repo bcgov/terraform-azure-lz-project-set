@@ -60,28 +60,28 @@ module "lz_vending" {
 
   budget_enabled = each.value.budget_amount > 0
 
-  budgets = {
-    registry = {
-      amount            = each.value.budget_amount
-      time_grain        = "Monthly"
-      time_period_start = formatdate("YYYY-MM-01'T'00:00:00Z", timestamp())
-      time_period_end   = formatdate("YYYY-MM-01'T'00:00:00Z", timeadd(timestamp(), "87600h")) // 10 years from now
-      notifications = {
-        eightypercent = {
-          enabled        = true
-          operator       = "GreaterThan"
-          threshold      = 80
-          threshold_type = "Actual"
-          contact_groups = ["Owner"]
-        }
-        budgetexceeded = {
-          enabled        = true
-          operator       = "GreaterThan"
-          threshold      = 100
-          threshold_type = "Forecasted"
-          contact_groups = ["Owner"]
-        }
-      }
-    }
-  }
+  # budgets = {
+  #   registry = {
+  #     amount            = each.value.budget_amount
+  #     time_grain        = "Monthly"
+  #     time_period_start = formatdate("YYYY-MM-01'T'00:00:00Z", timestamp())
+  #     time_period_end   = formatdate("YYYY-MM-01'T'00:00:00Z", timeadd(timestamp(), "87600h")) // 10 years from now
+  #     notifications = {
+  #       eightypercent = {
+  #         enabled        = true
+  #         operator       = "GreaterThan"
+  #         threshold      = 80
+  #         threshold_type = "Actual"
+  #         contact_groups = ["Owner"]
+  #       }
+  #       budgetexceeded = {
+  #         enabled        = true
+  #         operator       = "GreaterThan"
+  #         threshold      = 100
+  #         threshold_type = "Forecasted"
+  #         contact_groups = ["Owner"]
+  #       }
+  #     }
+  #   }
+  # }
 }
